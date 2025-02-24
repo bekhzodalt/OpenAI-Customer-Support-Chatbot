@@ -38,15 +38,7 @@ export class EchoBot extends ActivityHandler {
         }
 
 
-        async function postDataToEndpoint(url: string, requestBody: string, headers: AxiosRequestHeaders): Promise<OpenAiResponse> {
-            try {
-              const response: AxiosResponse = await axios.post(url, requestBody, {headers});
-              return response.data;
-            } catch (error) {
-              throw new Error(`Error posting data to ${url}: ${error}`);
-            }
-        }
-
+        
         // function that iterates through the conversation history and counts number of occurance "user" messages
         function count_user_messages(conversation_history_array: any) {
             let count = 0;

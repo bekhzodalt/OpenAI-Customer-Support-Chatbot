@@ -47,16 +47,7 @@ export class EchoBot extends ActivityHandler {
             }
         }
 
-        // function that iterates through the conversation history and counts number of occurance "user" messages
-        function count_user_messages(conversation_history_array: any) {
-            let count = 0;
-            for (let i = 0; i < conversation_history_array.length; i++) {
-                if (conversation_history_array[i].role == "user") {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        
 
 
         // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.

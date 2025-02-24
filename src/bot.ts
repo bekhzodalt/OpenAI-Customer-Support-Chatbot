@@ -132,6 +132,18 @@ export class EchoBot extends ActivityHandler {
             }
         });
 
-        
+        this.onMembersAdded(async (context, next) => {
+            const membersAdded = context.activity.membersAdded;
+            const welcomeText = 'Hi, this is ChatGPT model! How can I help you?';
+            
+            for (const member of membersAdded) {
+                if (member.id !== context.activity.recipient.id) {
+                    await context.sendActivity(MessageFactory.text(welcomeText, welcomeText));
+                    conversation_history_dict[context.activity.conversation.id] = [messages_init];
+                }
+            }
+            // By calling next() you ensure that the next BotHandler is run.
+            await next();
+        });
     }
 }
